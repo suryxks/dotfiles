@@ -8,3 +8,12 @@ vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help Tags" })
 -- Neotree keymaps
 
 vim.keymap.set("n", "<leader>b", ":Neotree filesystem reveal right<CR>", { desc = "open neo tree on right" })
+
+
+vim.keymap.set("n", "<leader>bb", ":Neotree close<CR>", { desc = "open neo tree on right" })
+
+-- lsp keymaps
+vim.keymap.set("n","K",vim.lsp.buf.hover,{})
+vim.keymap.set("n","gd",vim.lsp.buf.definition,{})
+vim.keymap.set("n","<leader>ca",vim.lsp.buf.code_action,{})
+
