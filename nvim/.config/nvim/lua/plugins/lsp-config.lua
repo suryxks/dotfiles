@@ -8,7 +8,8 @@ return {
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = {"lua_ls","rust_analyzer","clangd"}
+				--ensure_installed = { "lua_ls", "rust_analyzer", "clangd" },
+				auto_install = true,
 			})
 		end,
 	},
@@ -16,9 +17,16 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({})
-			lspconfig.clangd.setup({})
-			lspconfig.rust_analyzer.setup({})
+			local capabilities = require('cmp_nvim_lsp').default_capabilities()
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.clangd.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+			})
 		end,
-	}
+	},
 }
