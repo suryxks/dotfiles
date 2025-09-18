@@ -16,16 +16,27 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities,
+			vim.lsp.config("rust_analyzer", {
+				settings = {
+					["rust-analyzer"] = {
+						diagnostics = {
+							enable = true,
+						},
+						capabilities = capabilities,
+					},
+				},
 			})
-			lspconfig.clangd.setup({
-				capabilities = capabilities,
+			vim.lsp.config("clangd", {
+				settings = {
+					capabilities = capabilities,
+				},
 			})
-			lspconfig.rust_analyzer.setup({
-				capabilities = capabilities,
+
+			vim.lsp.config("clangd", {
+				settings = {
+					capabilities = capabilities,
+				},
 			})
 		end,
 	},
